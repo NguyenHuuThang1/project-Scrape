@@ -1,0 +1,68 @@
+<div class="mt-4">
+    <div class="row">
+        {{#each courses}}
+        <div class="col-sm-6 col-lg-4">
+            <div class="card card-courses-item">
+                <a href={{this.link}}>
+                    <img src="{{this.img}}" class="card-img-top" alt="...">
+                </a>
+                <div class="product-details">
+                    <h6>Chi tiết sản phẩm:</h6>
+                    <p>{{this.details}}</p>
+                </div>
+                <div class="card-body">
+                    <a href={{this.link}}>
+                        <h5 class="card-title">{{this.name}}</h5>
+                    </a>
+                    <p class="card-text">{{this.price}}</p>
+                    <a href={{this.link}}  class="btn btn-primary">Buy</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+
+<style>
+   .card-courses-item {
+    position: relative;
+}
+
+.product-details {
+    display: none;
+    position: absolute;
+    background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px; /* Bo tròn viền của bảng */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng đổ */
+    transition: opacity 0.3s ease; /* Hiệu ứng mờ */
+    opacity: 0;
+    
+}
+
+.card-courses-item:hover .product-details {
+    display: block;
+    opacity: 1;
+}
+
+
+</style>
+<script>
+    $(document).ready(function() {
+    $('.card-courses-item').hover(
+        function() {
+            $(this).find('.product-details').show();
+        },
+        function() {
+            $(this).find('.product-details').hide();
+        }
+    );
+});
+
+</script>
